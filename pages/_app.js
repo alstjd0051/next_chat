@@ -24,6 +24,8 @@ function MyApp({ Component, pageProps }) {
     );
   }
 
+  console.log(user);
+
   return (
     <ChakraProvider>
       <Component {...pageProps} />
