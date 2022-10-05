@@ -1,7 +1,7 @@
 import { ArrowLeftIcon } from "@chakra-ui/icons";
 import { Avatar, Button, Flex, IconButton, Text } from "@chakra-ui/react";
 import React from "react";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth, db } from "../../../util/firebaseconfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -26,7 +26,7 @@ export default function SideBar() {
     );
 
   const newChat = async () => {
-    const input = prompt("이메일을 입력하세요");
+    const input = prompt("이메일을 입력하세요 \n wsc03002@naver.com");
     if (!chatExists(input) && input != user.email) {
       await addDoc(collection(db, "chats"), { users: [user.email, input] });
     }
@@ -49,7 +49,6 @@ export default function SideBar() {
       ));
   };
 
-  console.log(chats);
   return (
     <Flex
       //   bg="blue.100"
@@ -74,12 +73,13 @@ export default function SideBar() {
           <Text> {user.displayName} </Text>
         </Flex>
         <button
-          children="Sign Out"
           size="sm"
           isRound
           icon={<ArrowLeftIcon />}
           onClick={() => signOut(auth)}
-        />
+        >
+          Sign Out
+        </button>
       </Flex>
 
       <Button m={5} p={4} onClick={() => newChat()}>
