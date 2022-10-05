@@ -73,7 +73,8 @@ export default function SideBar() {
           <Avatar src={user.photoURL} marginEnd={3} />
           <Text> {user.displayName} </Text>
         </Flex>
-        <IconButton
+        <button
+          children="Sign Out"
           size="sm"
           isRound
           icon={<ArrowLeftIcon />}
